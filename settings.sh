@@ -30,3 +30,17 @@ xset q | grep -A 3 'Screen Saver:'
 
 Now open Settings → Screensaver, then close it without changing anything, and check again:
 xset q | grep -A 3 'Screen Saver:'
+
+---
+xfce4-screensaver --quit
+sleep 2
+xset s off
+
+echo "Before restarting Screensaver:"
+xset q | grep -A 3 'Screen Saver:'
+
+xfce4-screensaver >/tmp/xfce4-screensaver-test.log 2>&1 &
+sleep 5
+
+echo "After restarting Screensaver:"
+xset q | grep -A 3 'Screen Saver:'
